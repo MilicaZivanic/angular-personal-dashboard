@@ -1,0 +1,23 @@
+<div class="edit-bookmark-wrapper">
+  <p *ngIf="!bookmark">Bookmark not found</p>
+  <ng-container *ngIf="bookmark">
+    <h2 class="is-bold">{{ bookmark.name }}</h2>
+    <form #form="ngForm" ngNativeValidate (ngSubmit)="onFormSubmit(form)">
+      <div class="form-field">
+        <label class="form-label">Name</label>
+        <input [ngModel]="bookmark.name" #textField="ngModel" name="name" class="textbox" type="text"
+          placeholder="e.g. Wikipedia">
+      </div>
+      <div class="form-field">
+        <label class="form-label">URL</label>
+        <input [ngModel]="bookmark.url" #textField="ngModel" name="url" class="textbox" type="url"
+          placeholder="e.g. https://wikipedia.com" required>
+      </div>
+      <div class="btns-container">
+        <a routerLink="../" class="btn">Cancel</a>
+        <button type="button" class="btn" (click)="delete()">Delete</button>
+        <button class="btn align-right">Save</button>
+      </div>
+    </form>
+  </ng-container>
+</div>
